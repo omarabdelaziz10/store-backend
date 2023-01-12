@@ -50,7 +50,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### User
                                         Table "public.users"
      Column      |         Type          | Collation | Nullable |              Default
------------------+-----------------------+-----------+----------+-----------------------------------
+-----------------|-----------------------|-----------|----------|-----------------------------------
  id              | integer               |           | not null | nextval('users_id_seq'::regclass)
  username        | character varying(64) |           | not null |
  first_name      | character varying(64) |           | not null |
@@ -62,39 +62,40 @@ Referenced by: TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user
 
 #### Product
                                     Table "public.products"
- Column |          Type          | Collation | Nullable |               Default
---------+------------------------+-----------+----------+--------------------------------------
- id     | integer                |           | not null | nextval('products_id_seq'::regclass)
- name   | character varying(250) |           | not null |
- price  | integer                |           | not null |
+ Column |          Type          | Collation | Nullable |               Default|
+--------|------------------------|-----------|----------|--------------------------------------|
+ id     | integer                |           | not null | nextval('products_id_seq'::regclass)|
+ name   | character varying(250) |           | not null |  |
+ price  | integer                |           | not null |  |
 
 Indexes: "products_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "order_details" CONSTRAINT "order_details_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
 
 #### Orders
                                Table "public.orders"
- Column  |     Type     | Collation | Nullable |              Default
----------+--------------+-----------+----------+------------------------------------
- id      | integer      |           | not null | nextval('orders_id_seq'::regclass)
- user_id | integer      |           | not null |
- status  | order_status |           | not null |
- 
+ Column  |     Type     | Collation | Nullable |              Default|
+---------|--------------|-----------|----------|------------------------------------|
+ id      | integer      |           | not null | nextval('orders_id_seq'::regclass)|
+ user_id | integer      |           | not null |          |
+ status  | order_status |           | not null |           |
+
 Indexes: "orders_pkey" PRIMARY KEY, btree (id)
 Foreign-key constraints: "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 Referenced by: TABLE "order_details" CONSTRAINT "order_details_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
 
  Schema |     Name     | Internal name | Size | Elements  |
---------+--------------+---------------+------+-----------+
+--------|--------------|---------------|------|-----------|
  public | order_status | order_status  | 4    | active   +|
         |              |               |      | completed |
 
 #### Order Detalis
  Column   |  Type   | Collation | Nullable |
-------------+---------+-----------+----------+
+------------|---------|-----------|----------|
  id         | integer |           | not null |
  quantity   | integer |           | not null |
  order_id   | integer |           | not null |
  product_id | integer |           | not null |
+
 Indexes: "order_details_pkey" PRIMARY KEY, btree (id)
 Foreign-key constraints:"order_details_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id),
 "order_details_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
