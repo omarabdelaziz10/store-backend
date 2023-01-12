@@ -56,6 +56,7 @@ These are the notes from a meeting with the frontend developer that describe wha
  first_name      | character varying(64) |           | not null |
  last_name       | character varying(64) |           | not null |
  password_digest | character varying     |           | not null |
+
 Indexes: "users_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 
@@ -66,6 +67,7 @@ Referenced by: TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user
  id     | integer                |           | not null | nextval('products_id_seq'::regclass)
  name   | character varying(250) |           | not null |
  price  | integer                |           | not null |
+
 Indexes: "products_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "order_details" CONSTRAINT "order_details_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
 
@@ -76,6 +78,7 @@ Referenced by: TABLE "order_details" CONSTRAINT "order_details_product_id_fkey" 
  id      | integer      |           | not null | nextval('orders_id_seq'::regclass)
  user_id | integer      |           | not null |
  status  | order_status |           | not null |
+ 
 Indexes: "orders_pkey" PRIMARY KEY, btree (id)
 Foreign-key constraints: "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 Referenced by: TABLE "order_details" CONSTRAINT "order_details_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
