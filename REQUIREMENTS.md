@@ -48,20 +48,22 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### User
-                                        Table "public.users"
-     Column      |         Type          | Collation | Nullable |
------------------|-----------------------|-----------|----------|
- id              | integer               |           | not null |
- username        | character varying(64) |           | not null |
- first_name      | character varying(64) |           | not null |
- last_name       | character varying(64) |           | not null |
- password_digest | character varying     |           | not null |
+                              Table "public.users"
+
+
+ Column |          Type          | Collation | Nullable |               Default|
+--------|------------------------|-----------|----------|--------------------------------------|
+ id     | integer                |           | not null | nextval('products_id_seq'::regclass)|
+ username   | character varying(64) |           | not null |  |
+ first_name  | character varying(64)                |           | not null |  |
+ last_name  | character varying(64)                |           | not null |  |
+ password_digest  | character varying                |           | not null |  |
 
 Indexes: "users_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 
 #### Product
-                                    Table "public.products"
+                              Table "public.products"
  Column |          Type          | Collation | Nullable |               Default|
 --------|------------------------|-----------|----------|--------------------------------------|
  id     | integer                |           | not null | nextval('products_id_seq'::regclass)|
