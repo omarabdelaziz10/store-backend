@@ -53,7 +53,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 
  Column |          Type          | Collation | Nullable |               Default|
 --------|------------------------|-----------|----------|--------------------------------------|
- id     | integer                |           | not null | nextval('products_id_seq'::regclass)|
+ id     | integer                |           | not null | nextval('users_id_seq'::regclass)|
  username   | character varying(64) |           | not null |  |
  first_name  | character varying(64)                |           | not null |  |
  last_name  | character varying(64)                |           | not null |  |

@@ -9,6 +9,7 @@ This is a REST API simulating the store functionalities designed with models and
 
 ```
 POSTGRES_HOST=localhost
+POSTGRES_PORT=8000
 POSTGRES_DB=store
 POSTGRES_TEST_DB=store_test
 POSTGRES_USER=###
@@ -34,6 +35,9 @@ TOKEN_SECRET=###
 
 ## Start the app
 - `npm run start` to start the app and get access via http://localhost:3000
+
+## Database Port
+- The Database will start on http://localhost:8000
 
 
 ## Test the app
