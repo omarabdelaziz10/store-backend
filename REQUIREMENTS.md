@@ -48,9 +48,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### User
-     Column      |         Type          | Collation | Nullable |
------------------+-----------------------+-----------+----------+
- id              | integer               |           | not null |
+                                        Table "public.users"
+     Column      |         Type          | Collation | Nullable |              Default
+-----------------+-----------------------+-----------+----------+-----------------------------------
+ id              | integer               |           | not null | nextval('users_id_seq'::regclass)
  username        | character varying(64) |           | not null |
  first_name      | character varying(64) |           | not null |
  last_name       | character varying(64) |           | not null |
@@ -59,18 +60,20 @@ Indexes: "users_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 
 #### Product
- Column |          Type          | Collation | Nullable |
---------+------------------------+-----------+----------+
- id     | integer                |           | not null |
+                                    Table "public.products"
+ Column |          Type          | Collation | Nullable |               Default
+--------+------------------------+-----------+----------+--------------------------------------
+ id     | integer                |           | not null | nextval('products_id_seq'::regclass)
  name   | character varying(250) |           | not null |
  price  | integer                |           | not null |
 Indexes: "products_pkey" PRIMARY KEY, btree (id)
 Referenced by: TABLE "order_details" CONSTRAINT "order_details_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
 
 #### Orders
-Column  |     Type     | Collation | Nullable |
----------+--------------+-----------+----------+
- id      | integer      |           | not null |
+                               Table "public.orders"
+ Column  |     Type     | Collation | Nullable |              Default
+---------+--------------+-----------+----------+------------------------------------
+ id      | integer      |           | not null | nextval('orders_id_seq'::regclass)
  user_id | integer      |           | not null |
  status  | order_status |           | not null |
 Indexes: "orders_pkey" PRIMARY KEY, btree (id)
